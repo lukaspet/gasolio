@@ -1,4 +1,4 @@
-import { ConfirmModalComponent } from './../modal/confirm-modal/confirm-modal.component';
+import { ConfirmDialogModel, ConfirmModalComponent } from './../modal/confirm-modal/confirm-modal.component';
 import { TipoAutomezzoService } from './../common/services/tipo-automezzo.service';
 import { TipoAutomezzo } from './../models/tipoAutomezzo';
 import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.component';
@@ -143,15 +143,22 @@ export class AutomezzoComponent implements OnInit, AfterViewInit {
     });
   }
   deleteAutomezzo(automezzo: Automezzo): void {
+
+    const message = `Sei sicuro di voler cancellare automezzo ` + automezzo.targa + `?`;
+
+    const dialogData = new ConfirmDialogModel('Elimina automezzo', message);
+
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
       // disableClose: true,
       // panelClass: 'login-dialog-container', // to hide padding on login form - added padding : 0 on gloabal styles.css
-      width: '500px',
-      height: '440px',
-      data: automezzo
+      // width: '500px',
+      // height: '440px',
+      maxWidth: '400px',
+      data: dialogData
     });
     dialogRef.afterClosed().subscribe(result => {
         if (result) {
+          console.log(result);
           // this.updateContact(result);
         }
     });

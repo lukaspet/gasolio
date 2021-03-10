@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { ConfirmModalComponent } from './modal/confirm-modal/confirm-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -69,6 +71,7 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions),
     MatButtonModule,
     HttpClientModule,
+    MatTooltipModule,
   ],
   providers: [
     DatePipe

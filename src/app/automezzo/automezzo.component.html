@@ -45,24 +45,16 @@
         <td mat-cell *matCellDef="let element" class="action-link">
           <div class="action-automezzo">
             <a mat-icon-button class="more-automezzo">
-              <mat-icon aria-hidden="false" aria-label="More automezzo icon">more_horiz</mat-icon>
+              <mat-icon matTooltip="{{expandedElement ? 'Vedi meno' : 'Vedi più'}}" aria-hidden="false" aria-label="More automezzo icon">more_horiz</mat-icon>
             </a>
-            <!-- <a mat-icon-button class="edit-automezzo" (click)="updateAutomezzo(element)">
-              <mat-icon aria-hidden="false" aria-label="Edit automezzo icon">edit</mat-icon>
-            </a>
-            <a mat-icon-button class="delete-automezzo" (click)="deleteAutomezzo(element)">
-              <mat-icon aria-hidden="false" aria-label="Delete automezzo icon">delete</mat-icon>
-            </a> -->
           </div>
-          <!-- <a (click)="deleteAutomezzo(element)">Delete</a> -->
         </td>
       </ng-container>
 
        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
       <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-          <div class="example-element-detail"
-              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <div class="automezzo-detail">
               <div class="expand-element-tipoAutomezzo grid">
                 <mat-card class="mat-elevation-z4 card">

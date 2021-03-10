@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
+    MatTooltipModule,
   ]
 })
 export class AutomezzoModule { }

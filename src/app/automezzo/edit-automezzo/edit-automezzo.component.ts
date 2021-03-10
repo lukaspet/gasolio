@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Automezzo } from './../../models/automezzo';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-automezzo',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditAutomezzoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<EditAutomezzoComponent>, @Inject(MAT_DIALOG_DATA) public data: Automezzo) { }
 
   ngOnInit(): void {
   }
