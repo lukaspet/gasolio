@@ -1,0 +1,232 @@
+<div class="container" id ="tableMezzo">
+  <mat-form-field class="table-filter" appearance="fill">
+    <input matInput autocomplete="off" [formControl] = "filterControl" [value] = "filter"
+    (focus)="checkPlaceHolder()" (blur)="checkPlaceHolder()" placeholder = {{myplaceHolder}}>
+    <button (click) = "clear()" mat-button matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon class = "search-icon-close">close</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="mat-elevation-z8 table-automezzi">
+    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+
+      <!-- TagAutomezzo Column -->
+      <ng-container matColumnDef="tagMezzo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tag Automezzo </th>
+        <td mat-cell *matCellDef="let row"> {{row.tagMezzo}} </td>
+      </ng-container>
+
+      <!-- Targa Column -->
+      <ng-container matColumnDef="targa">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Targa </th>
+        <td mat-cell *matCellDef="let row"> {{row.targa}} </td>
+      </ng-container>
+
+      <!-- Marca-Modello Column -->
+      <ng-container matColumnDef="marca-modello">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Marca/Modello </th>
+        <td mat-cell *matCellDef="let row"> {{row.marcaModello}} </td>
+      </ng-container>
+
+      <!-- Filiale Column -->
+      <ng-container matColumnDef="filiale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Filiale </th>
+        <td mat-cell *matCellDef="let row"> {{row.filiale}} </td>
+      </ng-container>
+
+      <!-- Km/Ore Column -->
+      <ng-container matColumnDef="km-ore">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Km/Ore </th>
+        <td mat-cell *matCellDef="let row"> {{row.kmOre}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Azione </th>
+        <td mat-cell *matCellDef="let element" class="action-link">
+          <div class="action-automezzo">
+            <a mat-icon-button class="more-automezzo"><mat-icon aria-hidden="false" aria-label="More automezzo icon">more_horiz</mat-icon></a>
+            <a mat-icon-button class="edit-automezzo" (click)="updateAutomezzo(element)">
+              <mat-icon aria-hidden="false" aria-label="Edit automezzo icon">edit</mat-icon>
+            </a>
+            <a mat-icon-button class="delete-automezzo"><mat-icon aria-hidden="false" aria-label="Delete automezzo icon">delete</mat-icon></a>
+          </div>
+          <!-- <a (click)="deleteAutomezzo(element)">Delete</a> -->
+        </td>
+      </ng-container>
+
+       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="example-element-detail"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="automezzo-detail">
+              <div class="expand-element-tipoAutomezzo grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Tipo Automezzo</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.tipoAutomezzo}}
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="expand-element-accise grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Accise</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.accise ==! 0 ? "Si" : "No"}}
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="expand-element-fringe grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Fringe Benefit</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.fringeBenefit ==! 0 ? "Si" : "No"}}
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="expand-element-freqTagliando grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Freq. Tagliando</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.frequenzaTagliando}}
+                  </mat-card-content>
+                </mat-card>  </div>
+              <div class="expand-element-kmUltimoTagliando grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Km ultimo Tagl.</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.kmUltimoTagliando}}
+                  </mat-card-content>
+                </mat-card></div>
+              <div class="expand-element-modifica grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Modifica</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    <a mat-icon-button class="edit-automezzo" (click)="updateAutomezzo(element)">
+                      <mat-icon aria-hidden="false" aria-label="Edit automezzo icon">edit</mat-icon>
+                    </a>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="expand-element-scadAssicurazione grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Scad. Assicurazione</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.scadenzaAssicurazione | date: 'dd/MM/yyyy'}}
+                  </mat-card-content>
+                </mat-card></div>
+              <div class="expand-element-scadBollo grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Scad. Bollo</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.scadenzaBollo | date: 'dd/MM/yyyy'}}
+                  </mat-card-content>
+                </mat-card></div>
+              <div class="expand-element-scadCollaudo grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Scad. Collaudo</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.scadenzaCollaudo | date: 'dd/MM/yyyy'}}
+                  </mat-card-content>
+                </mat-card></div>
+              <div class="expand-element-kmUltimoRifornimento grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Km ultimo rif.</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.kmOreUltimoRifornimento}}
+                  </mat-card-content>
+                </mat-card></div>
+              <div class="expand-element-scadTachigrafo grid">
+                <mat-card class="mat-elevation-z4 card">
+                  <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">
+                      <div class="title">Scad. Tachigrafo</div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="card-content">
+                    {{element.scadenzaTachigrafo | date: 'dd/MM/yyyy'}}
+                  </mat-card-content>
+                </mat-card></div>
+                <div class="expand-element-cancel grid">
+                  <mat-card class="mat-elevation-z4 card">
+                    <mat-card-header class="card-header">
+                      <mat-card-title class="card-title">
+                        <div class="title">Cancella</div>
+                      </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="card-content">
+                      <a mat-icon-button class="delete-automezzo"><mat-icon aria-hidden="false" aria-label="Delete automezzo icon">delete</mat-icon></a>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+            </div>
+            <!-- <div class="example-element-description">
+              {{element.description}}
+            </div> -->
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Nessun risultato per il filtro "{{filter}}"</td>
+      </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[50, 75, 100]" (page)="onAllUserPaginateChange($event)"></mat-paginator>
+  </div>
+</div>
+<div class="new-automezzo">
+  <a mat-mini-fab style="margin-right: 14px;"><mat-icon>add</mat-icon></a>
+</div>
+

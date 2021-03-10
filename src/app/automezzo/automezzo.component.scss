@@ -1,0 +1,134 @@
+table {
+  width: 1000px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+// td, th {
+//   // width: 25%;
+// }
+.table-automezzi {
+  max-width: 1000px;
+  align-self: center;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 70px;
+}
+.table-filter {
+  max-width: 1000px;
+  align-self: center;
+}
+.mat-column-tagMezzo {
+  flex: 0 0 10%;
+  width: 14%
+}
+.mat-column-action {
+  flex: 0 0 10%;
+  width: 15%
+}
+td.mat-column-tagMezzo {
+  padding-left: 55px!important;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.automezzo-detail {
+  display: flex;
+  min-width: 80px;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  min-height: 104px;
+  flex-wrap: wrap;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+.edit-automezzo {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+}
+.edit-automezzo:hover {
+  color: green;
+}
+.new-automezzo {
+  z-index: 5;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+}
+.card {
+  width: 150px;                 /* Set width of cards */
+  border: 1px solid #203e72;    /* Set up Border */
+  border-radius: 4px;           /* Slightly Curve edges */
+  overflow: hidden;             /* Fixes the corners */
+  display: flex;                /* Children use Flexbox */
+  flex-direction: column;       /* Rotate Axis */
+  padding: 0;
+}
+.card-header {
+  color: #203e72;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #203e72;
+  background-color: #ebf0ff;
+  padding: 5px 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.card-title {
+  margin: 0!important;
+}
+.card-content {
+  display: flex;              /* Children use Flexbox */
+  flex-direction: column;     /* Rotate Axis to Vertical */
+  justify-content: center;    /* Group Children in Center */
+  align-items: center;        /* Group Children in Center (on cross axis) */
+  padding: 15px 0;            /* Add padding to the top/bottom */
+}
+.grid {
+  padding: 5px;
+}
