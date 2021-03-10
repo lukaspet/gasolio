@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { ConfirmModalComponent } from './modal/confirm-modal/confirm-modal.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -59,6 +60,7 @@ const customNotifierOptions: NotifierOptions = {
     AppLayoutComponent,
     LogoutComponent,
     HomeComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,

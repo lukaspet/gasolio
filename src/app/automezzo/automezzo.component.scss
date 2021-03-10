@@ -30,7 +30,7 @@ table {
 }
 .mat-column-action {
   flex: 0 0 10%;
-  width: 15%
+  width: 10%
 }
 td.mat-column-tagMezzo {
   padding-left: 55px!important;
@@ -83,13 +83,16 @@ tr.example-element-row:not(.example-expanded-row):active {
   opacity: 0.5;
 }
 .edit-automezzo {
-  font-size: 20px;
-  height: 20px;
-  width: 20px;
-  line-height: 20px;
+  color: green;
 }
 .edit-automezzo:hover {
-  color: green;
+  color: rgb(169, 228, 169);
+}
+.delete-automezzo {
+  color: red;
+}
+.delete-automezzo:hover {
+  color: rgb(255, 157, 157);
 }
 .new-automezzo {
   z-index: 5;
@@ -98,7 +101,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   right: 30px;
 }
 .card {
-  width: 150px;                 /* Set width of cards */
+  width: 140px;                 /* Set width of cards */
   border: 1px solid #203e72;    /* Set up Border */
   border-radius: 4px;           /* Slightly Curve edges */
   overflow: hidden;             /* Fixes the corners */
@@ -127,8 +130,53 @@ tr.example-element-row:not(.example-expanded-row):active {
   flex-direction: column;     /* Rotate Axis to Vertical */
   justify-content: center;    /* Group Children in Center */
   align-items: center;        /* Group Children in Center (on cross axis) */
-  padding: 15px 0;            /* Add padding to the top/bottom */
+  padding: 15px 0;
+  max-height: 20px;         /* Add padding to the top/bottom */
 }
 .grid {
   padding: 5px;
+}
+.card-update {
+  width: 140px;                 /* Set width of cards */
+  border: 1px solid #207227;    /* Set up Border */
+  border-radius: 4px;           /* Slightly Curve edges */
+  overflow: hidden;             /* Fixes the corners */
+  display: flex;                /* Children use Flexbox */
+  flex-direction: column;       /* Rotate Axis */
+  padding: 0;
+}
+.card-header-update {
+  color: #207227;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #207227;
+  background-color: #e5fce7;
+  padding: 5px 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.card-delete {
+  width: 140px;                 /* Set width of cards */
+  border: 1px solid #ce0303;    /* Set up Border */
+  border-radius: 4px;           /* Slightly Curve edges */
+  overflow: hidden;             /* Fixes the corners */
+  display: flex;                /* Children use Flexbox */
+  flex-direction: column;       /* Rotate Axis */
+  padding: 0;
+}
+.card-header-delete {
+  color: #ce0303;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #ce0303;
+  background-color: #fde3e3;
+  padding: 5px 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }

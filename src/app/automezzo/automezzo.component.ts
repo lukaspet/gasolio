@@ -1,3 +1,4 @@
+import { ConfirmModalComponent } from './../modal/confirm-modal/confirm-modal.component';
 import { TipoAutomezzoService } from './../common/services/tipo-automezzo.service';
 import { TipoAutomezzo } from './../models/tipoAutomezzo';
 import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.component';
@@ -129,6 +130,20 @@ export class AutomezzoComponent implements OnInit, AfterViewInit {
   }
   updateAutomezzo(automezzo: Automezzo): void {
     const dialogRef = this.dialog.open(EditAutomezzoComponent, {
+      // disableClose: true,
+      // panelClass: 'login-dialog-container', // to hide padding on login form - added padding : 0 on gloabal styles.css
+      width: '500px',
+      height: '440px',
+      data: automezzo
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          // this.updateContact(result);
+        }
+    });
+  }
+  deleteAutomezzo(automezzo: Automezzo): void {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
       // disableClose: true,
       // panelClass: 'login-dialog-container', // to hide padding on login form - added padding : 0 on gloabal styles.css
       width: '500px',
