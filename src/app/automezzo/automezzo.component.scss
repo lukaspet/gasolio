@@ -97,8 +97,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 .new-automezzo {
   z-index: 5;
   position: fixed;
-  bottom: 50px;
-  right: 30px;
+  top: 90px;
+  right: 15px;
+}
+.new-automezzo a{
+  margin-right: 9px;
+  background-color: #203e72;
+  color: white;
 }
 .card {
   width: 140px;                 /* Set width of cards */

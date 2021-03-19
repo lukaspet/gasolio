@@ -4,7 +4,7 @@ import { TipoAutomezzo } from './../models/tipoAutomezzo';
 import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.component';
 import { Automezzo } from './../models/automezzo';
 import { Filiale } from './../models/filiale';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { AutomezzoService } from './../common/services/automezzo.service';
 import { FilialeService } from './../common/services/filiale.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -20,9 +20,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./automezzo.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('collapsed, void', style({height: '0px', minHeight: '0'})), // added 'collapsed, void' for matSort error
       state('expanded', style({height: '*'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      transition('expanded <=> void', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')), // added whole line for matSort error
     ]),
   ],
 })
@@ -31,7 +32,7 @@ export class AutomezzoComponent implements OnInit, AfterViewInit {
   automezzi: Automezzo[];
   filiali: Filiale[];
   tipoAutomezzo: TipoAutomezzo[];
-  displayedColumns: string[] = ['tagMezzo', 'targa', 'marca-modello', 'filiale', 'km-ore', 'action'];
+  displayedColumns: string[] = ['tagMezzo', 'targa', 'marcaModello', 'filiale', 'kmOre', 'action'];
   dataSource = new MatTableDataSource<Automezzo>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -108,6 +109,9 @@ export class AutomezzoComponent implements OnInit, AfterViewInit {
           || data.marcaModello.toLowerCase().indexOf(searchTerms.nome) !== -1);
       };
     return filterFunction;
+  }
+  resetPaging(): void {
+    this.paginator.pageIndex = 0; // on sort reset Paging - disabled (removed TableSort from automezzo.module)
   }
   clear(): void {
     this.filterControl.reset('');

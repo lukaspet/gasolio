@@ -11,7 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.1.0",
+    "@agm/core": "^1.1.0",
+    "@angular/animations": "^11.2.5",
     "@angular/cdk": "^11.2.0",
     "@angular/common": "~11.1.0",
     "@angular/compiler": "~11.1.0",
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "@types/googlemaps": "^3.43.3",
     "angular-notifier": "^6.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

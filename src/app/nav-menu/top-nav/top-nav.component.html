@@ -1,0 +1,38 @@
+<!-- <div fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="header">
+  <button mat-icon-button (click)="sidenav.toggle();">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>Zanutta Gasolio</span>
+  <span class="spacer"></span>
+
+</div> -->
+<mat-toolbar class="top-nav">
+  <mat-toolbar-row class="toolbar-row">
+    <!-- <div class="sidenav-hide">
+      <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+      </button>
+    </div> -->
+    <button mat-icon-button (click)="sidenav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="header-text">Zanutta Gasolio</span>
+    <span class="menu-spacer"></span>
+    <div class="topnav-content">
+      <!-- <button mat-icon-button aria-label="Login" (click)="$event.preventDefault(); loginModal()" *ngIf="!(isLoggedIn$ | async)" matTooltip="Login">
+        <mat-icon class="login">login</mat-icon>
+      </button>
+      <button class="user-button" mat-button [matMenuTriggerFor]="menu" *ngIf="(isLoggedIn$ | async)">
+        <span class="user-text">{{ currentUser}}</span>
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </mat-menu> -->
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

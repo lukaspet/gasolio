@@ -1,3 +1,5 @@
+import { ScrollTopComponent } from './../scroll-top/scroll-top.component';
+// import { ScrollTopModule } from './../scroll-top/scroll-top.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,10 +16,15 @@ import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [AutomezzoComponent, EditAutomezzoComponent],
+  declarations: [
+    AutomezzoComponent,
+    EditAutomezzoComponent,
+    ScrollTopComponent,
+  ],
   imports: [
     CommonModule,
     AutomezzoRoutingModule,
@@ -32,6 +39,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     MatCardModule,
     MatTooltipModule,
+    MatRadioModule,
+    MatSortModule,
+    // ScrollTopModule,
   ]
 })
 export class AutomezzoModule { }

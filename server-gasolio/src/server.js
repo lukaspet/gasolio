@@ -28,6 +28,8 @@ require("./routes/automezzo.routes.js")(app);
 require("./routes/autista.routes.js")(app);
 require("./routes/filiale.routes.js")(app);
 require("./routes/tipo.automezzo.routes.js")(app);
+require("./routes/page.routes.js")(app);
+require("./routes/pompa.routes.js")(app);
 // set port, listen for requests
 app.listen(PORT, () => {
   console.log("Server is running on port " + process.env.PORT);
