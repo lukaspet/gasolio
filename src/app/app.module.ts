@@ -1,4 +1,5 @@
-// import { ScrollTopModule } from './scroll-top/scroll-top.module';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { ScrollTopModule } from './scroll-top/scroll-top.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -71,7 +72,7 @@ const customNotifierOptions: NotifierOptions = {
     ConfirmModalComponent,
     TopNavComponent,
     SideNavComponent,
-
+    ScrollTopComponent,
   ],
   imports: [
     BrowserModule,

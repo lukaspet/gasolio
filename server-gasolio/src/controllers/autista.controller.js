@@ -39,7 +39,7 @@ exports.update = (req, res) => {
 
   Autista.updateById(
     req.params.id,
-    new Contact(req.body),
+    new Autista(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {

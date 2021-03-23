@@ -4,7 +4,7 @@ import { TipoAutomezzo } from './../models/tipoAutomezzo';
 import { EditAutomezzoComponent } from './edit-automezzo/edit-automezzo.component';
 import { Automezzo } from './../models/automezzo';
 import { Filiale } from './../models/filiale';
-import { Component, OnInit, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, HostListener, ElementRef } from '@angular/core';
 import { AutomezzoService } from './../common/services/automezzo.service';
 import { FilialeService } from './../common/services/filiale.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -28,6 +28,7 @@ import { MatDialog } from '@angular/material/dialog';
   ],
 })
 export class AutomezzoComponent implements OnInit, AfterViewInit {
+
   expandedElement: Automezzo | null;
   automezzi: Automezzo[];
   filiali: Filiale[];
@@ -166,5 +167,8 @@ export class AutomezzoComponent implements OnInit, AfterViewInit {
           // this.updateContact(result);
         }
     });
+  }
+  onScroll(event: Event): void {
+    console.log('here i am');
   }
 }

@@ -1,13 +1,13 @@
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScrollTopComponent } from './scroll-top.component';
+// import { ScrollTopComponent } from './scroll-top.component';
 import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    ScrollTopComponent,
+    // ScrollTopComponent,
   ],
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
   ],
   exports: [
-    ScrollTopComponent,
+    // ScrollTopComponent,
   ]
 })
 export class ScrollTopModule { }

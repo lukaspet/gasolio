@@ -1,5 +1,3 @@
-import { ScrollTopComponent } from './../scroll-top/scroll-top.component';
-// import { ScrollTopModule } from './../scroll-top/scroll-top.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -23,7 +21,6 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     AutomezzoComponent,
     EditAutomezzoComponent,
-    ScrollTopComponent,
   ],
   imports: [
     CommonModule,

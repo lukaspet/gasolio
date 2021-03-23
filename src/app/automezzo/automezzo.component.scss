@@ -1,5 +1,5 @@
 table {
-  width: 1000px;
+  width: 100%;
 }
 
 .mat-form-field {
@@ -29,8 +29,8 @@ table {
   width: 14%
 }
 .mat-column-action {
-  flex: 0 0 10%;
-  width: 10%
+  flex: 0 0 12%;
+  width: 12%
 }
 td.mat-column-tagMezzo {
   padding-left: 55px!important;
@@ -60,12 +60,26 @@ tr.example-element-row:not(.example-expanded-row):active {
 .automezzo-detail {
   display: flex;
   min-width: 80px;
-  padding: 8px;
+  padding: 8px 0 8px 8px;
   font-weight: lighter;
   margin: 8px 0;
   min-height: 104px;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
+.action-automezzo {
+  display: flex;
+  flex-direction: row;
+}
+
+// .automezzo-detail-action {
+//   display: flex;
+//   padding: 8px 8px 8px 0;
+//   margin: 8px 0;
+//   flex-direction: column;
+//   justify-content: flex-start;
+// }
 
 .example-element-symbol {
   font-weight: bold;
@@ -185,3 +199,4 @@ tr.example-element-row:not(.example-expanded-row):active {
   align-items: center;
   display: flex;
 }
+

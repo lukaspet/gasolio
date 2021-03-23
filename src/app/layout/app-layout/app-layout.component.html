@@ -5,11 +5,13 @@
       <app-side-nav></app-side-nav>
     </mat-sidenav>
     <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
-      <div class="main_content" >
-        <div style="padding: 20px"  >
+      <div class="main_content" #content (scroll)="child.onWindowScroll(content)">
+        <div style="padding: 20px" >
           <router-outlet></router-outlet>
+          <app-scroll-top #child (scrollToTop)="scrollToTop(content)"></app-scroll-top>
         </div>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+

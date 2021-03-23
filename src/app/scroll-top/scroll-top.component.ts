@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, HostListener } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, Output, EventEmitter, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -10,28 +10,23 @@ export class ScrollTopComponent implements OnInit {
 
   windowScrolled: boolean;
 
+  @Output() scrollToTop: EventEmitter<any> = new EventEmitter();
+  content: ElementRef;
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
+  // @HostListener('window:scroll', [])
   @HostListener('window:scroll', [])
 
-  public onWindowScroll(): void {
-    console.log('Halo');
-    if (window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop > 100) {
+  public onWindowScroll(content: any): void {
+    this.content = content;
+    if (window.pageYOffset || content.scrollTop || this.document.body.scrollTop > 100) {
       this.windowScrolled = true;
-    } else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
+    } else if (this.windowScrolled && window.pageYOffset || content.scrollTop || document.body.scrollTop < 10) {
       this.windowScrolled = false;
     }
   }
-  scrollToTop(): void {
-    (function smoothscroll(): void {
-
-      const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-
-      if (currentScroll > 0) {
-        window.requestAnimationFrame(smoothscroll);
-        window.scrollTo(0, currentScroll - (currentScroll / 8));
-      }
-    })();
+  callScroll(): void {
+    this.scrollToTop.emit(this.content);
   }
   ngOnInit(): void {
   }
